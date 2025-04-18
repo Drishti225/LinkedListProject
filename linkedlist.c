@@ -103,6 +103,20 @@ void del_end() {
     free(curr->next);
     curr->next = NULL;
 }
+void  reverse(){
+    struct node *curr=head;
+    struct node* prev=NULL;
+    struct node* next=NULL;
+    while(curr!=NULL)
+    {
+        next=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=next;
+    }
+    head=prev;
+    
+}
 
 void display() {
     struct node *curr = head;
@@ -125,6 +139,7 @@ int main() {
         printf("5. Delete from position\n");
         printf("6. Delete from end\n");
         printf("7. Display list\n");
+        printf("8. Reverse the list\n");
         printf("0. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
@@ -160,6 +175,9 @@ int main() {
                 break;
             case 7:
                 display();
+                break;
+            case 8:
+                reverse();
                 break;
             case 0:
                 printf("Exiting program.\n");
